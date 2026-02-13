@@ -48,7 +48,7 @@ body{
     font-size:130px;
     color:gold;
     position:absolute;
-    top:90px;
+    top:95px;
     left:50%;
     transform:translateX(-50%);
     text-shadow:0 0 20px gold,0 0 40px orange,0 0 80px gold;
@@ -57,9 +57,9 @@ body{
 
 @keyframes pulse{
     from{text-shadow:0 0 20px gold,0 0 40px orange;}
-    to{text-shadow:0 0 50px gold,0 0 100px orange;}
+    to{text-shadow:0 0 60px gold,0 0 120px orange;}
 }
-    
+
 .om-text{
     position:absolute;
     top:0;
@@ -68,16 +68,16 @@ body{
     width:280px;
     height:280px;
     border-radius:50%;
-    animation:rotate 18s linear infinite;
+    animation:rotate 20s linear infinite;
 }
 
 .om-text span{
     position:absolute;
     left:50%;
-    transform-origin:0 140px;
+    transform-origin:0 135px;
     color:cyan;
     font-size:18px;
-    text-shadow:0 0 10px cyan,0 0 20px cyan;
+    text-shadow:0 0 8px cyan,0 0 18px cyan;
 }
 
 @keyframes rotate{
@@ -96,11 +96,22 @@ h1{
 
 .subtitle{
     font-size:22px;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
-    
+
+.arrow{
+    font-size:28px;
+    color:cyan;
+    animation:arrowMove 1s infinite;
+}
+@keyframes arrowMove{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(8px);}
+    100%{transform:translateY(0);}
+}
+
 .blessing-btn{
-    margin-top:20px;
+    margin-top:10px;
     font-size:20px;
     padding:12px 25px;
     background:transparent;
@@ -113,25 +124,24 @@ h1{
 
 @keyframes dance{
     from{transform:scale(1);}
-    to{transform:scale(1.1);}
+    to{transform:scale(1.08);}
 }
 
 .blessing-btn:hover{
     background:cyan;
     color:black;
 }
-
+    
 .footer{
     margin-top:25px;
     font-size:20px;
     display:none;
     opacity:0;
-    transform:translateY(20px);
 }
 
 .show-blessing{
     display:block;
-    animation:blessAnim 1.5s forwards;
+    animation:blessAnim 1.5s forwards, blink 1s infinite 2s;
 }
 
 @keyframes blessAnim{
@@ -142,8 +152,14 @@ h1{
     to{
         opacity:1;
         transform:translateY(0);
-        text-shadow:0 0 10px cyan,0 0 20px cyan;
+        text-shadow:0 0 15px cyan,0 0 30px cyan;
     }
+}
+
+@keyframes blink{
+    0%{opacity:1;}
+    50%{opacity:0.6;}
+    100%{opacity:1;}
 }
 </style>
 </head>
@@ -151,7 +167,7 @@ h1{
 <body>
 
 <script>
-
+    
 for(let i=0;i<40;i++){
  let p=document.createElement("div");
  p.className="particle";
@@ -170,6 +186,8 @@ for(let i=0;i<40;i++){
     <h1>Happy Mahashivratri</h1>
     <div class="subtitle">Har Har Mahadev 🙏</div>
 
+    <div class="arrow">⬇</div>
+
     <button class="blessing-btn" id="blessBtn" onclick="giveBlessing()">
         इस बटन को दबा कर<br>
         शिव का आशीर्वाद प्राप्त करें
@@ -186,16 +204,17 @@ for(let i=0;i<40;i++){
 
 <script>
 
-const text = " ॐ नमः शिवाय ॐ नमः शिवाय ॐ नमः शिवाय ";
+const mantra = "ॐ नमः शिवाय ";
+const repeated = mantra.repeat(8);   // increase repetition
 const circle = document.getElementById("circleText");
 
-for(let i=0;i<text.length;i++){
+for(let i=0;i<repeated.length;i++){
     let span=document.createElement("span");
-    span.innerText=text[i];
-    span.style.transform="rotate("+(i*(360/text.length))+"deg)";
+    span.innerText=repeated[i];
+    span.style.transform="rotate("+(i*(360/repeated.length))+"deg)";
     circle.appendChild(span);
 }
-    
+
 function giveBlessing(){
 
     let audio=document.getElementById("shivAudio");
@@ -207,11 +226,12 @@ function giveBlessing(){
         navigator.vibrate(200);
     }
 
+    document.querySelector(".arrow").style.display="none";
     document.getElementById("blessBtn").style.display="none";
 
     let msg=document.getElementById("blessingMessage");
     msg.classList.add("show-blessing");
-                      
+
     for(let i=0;i<25;i++){
         let petal=document.createElement("div");
         petal.className="petal";
