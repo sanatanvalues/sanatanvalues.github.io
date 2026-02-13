@@ -68,7 +68,7 @@ body{
     width:280px;
     height:280px;
     border-radius:50%;
-    animation:rotate 20s linear infinite;
+    animation:rotate 18s linear infinite;
 }
 
 .om-text span{
@@ -76,7 +76,9 @@ body{
     left:50%;
     transform-origin:0 135px;
     color:cyan;
-    font-size:18px;
+    font-size:16px;
+    font-weight:bold;
+    letter-spacing:1px;
     text-shadow:0 0 8px cyan,0 0 18px cyan;
 }
 
@@ -100,13 +102,16 @@ h1{
 }
 
 .arrow{
-    font-size:28px;
+    font-size:40px;
+    font-weight:bold;
     color:cyan;
+    text-shadow:0 0 15px cyan,0 0 30px cyan;
     animation:arrowMove 1s infinite;
 }
+
 @keyframes arrowMove{
     0%{transform:translateY(0);}
-    50%{transform:translateY(8px);}
+    50%{transform:translateY(10px);}
     100%{transform:translateY(0);}
 }
 
@@ -131,7 +136,7 @@ h1{
     background:cyan;
     color:black;
 }
-    
+
 .footer{
     margin-top:25px;
     font-size:20px;
@@ -167,7 +172,7 @@ h1{
 <body>
 
 <script>
-    
+
 for(let i=0;i<40;i++){
  let p=document.createElement("div");
  p.className="particle";
@@ -186,7 +191,7 @@ for(let i=0;i<40;i++){
     <h1>Happy Mahashivratri</h1>
     <div class="subtitle">Har Har Mahadev 🙏</div>
 
-    <div class="arrow">⬇</div>
+    <div class="arrow">⬇⬇⬇</div>
 
     <button class="blessing-btn" id="blessBtn" onclick="giveBlessing()">
         इस बटन को दबा कर<br>
@@ -204,8 +209,8 @@ for(let i=0;i<40;i++){
 
 <script>
 
-const mantra = "ॐ नमः शिवाय ";
-const repeated = mantra.repeat(8);   // increase repetition
+const mantra = "OM NAMAH SHIVAYA ";
+const repeated = mantra.repeat(10);
 const circle = document.getElementById("circleText");
 
 for(let i=0;i<repeated.length;i++){
@@ -244,5 +249,5 @@ function giveBlessing(){
 </script>
 
 </body>
-    </html>
-    
+        </html>
+        
