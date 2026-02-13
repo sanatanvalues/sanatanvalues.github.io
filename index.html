@@ -5,17 +5,17 @@
 <title>Har Har Mahadev</title>
 
 <style>
-body {
+body{
     margin:0;
     padding:0;
     text-align:center;
-    background: radial-gradient(circle at center, #020024, #000000);
-    font-family: Arial, sans-serif;
+    background:radial-gradient(circle at center,#020024,#000000);
+    font-family:Arial,sans-serif;
     color:white;
     overflow:hidden;
 }
 
-.particle {
+.particle{
     position:absolute;
     width:4px;
     height:4px;
@@ -23,85 +23,83 @@ body {
     border-radius:50%;
     animation:float 10s infinite linear;
 }
-@keyframes float {
-    from {transform:translateY(100vh);}
-    to {transform:translateY(-10vh);}
+@keyframes float{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-10vh);}
 }
 
-.petal {
+.petal{
     position:absolute;
     font-size:20px;
     animation:fall 6s linear forwards;
 }
-@keyframes fall {
-    from {transform:translateY(-10vh) rotate(0deg);}
-    to {transform:translateY(100vh) rotate(360deg);}
+@keyframes fall{
+    from{transform:translateY(-10vh) rotate(0deg);}
+    to{transform:translateY(100vh) rotate(360deg);}
 }
 
-.trishul-container {
+.trishul-container{
     margin-top:30px;
     position:relative;
-    height:300px;
+    height:320px;
 }
 
-.trishul {
-    font-size:120px;
+.trishul{
+    font-size:130px;
     color:gold;
-    text-shadow:0 0 20px gold,
-                0 0 40px orange,
-                0 0 60px gold;
     position:absolute;
-    top:80px;
+    top:90px;
     left:50%;
     transform:translateX(-50%);
+    text-shadow:0 0 20px gold,0 0 40px orange,0 0 80px gold;
     animation:pulse 2s infinite alternate;
 }
 
-@keyframes pulse {
-    from { text-shadow:0 0 20px gold, 0 0 40px orange; }
-    to { text-shadow:0 0 40px gold, 0 0 80px orange; }
+@keyframes pulse{
+    from{text-shadow:0 0 20px gold,0 0 40px orange;}
+    to{text-shadow:0 0 50px gold,0 0 100px orange;}
 }
-
-.om-text {
+    
+.om-text{
     position:absolute;
     top:0;
     left:50%;
     transform:translateX(-50%);
-    width:260px;
-    height:260px;
+    width:280px;
+    height:280px;
     border-radius:50%;
-    animation:rotate 15s linear infinite;
+    animation:rotate 18s linear infinite;
 }
 
-.om-text span {
+.om-text span{
     position:absolute;
     left:50%;
-    transform-origin:0 130px;
+    transform-origin:0 140px;
     color:cyan;
     font-size:18px;
-    text-shadow:0 0 10px cyan, 0 0 20px cyan;
+    text-shadow:0 0 10px cyan,0 0 20px cyan;
 }
 
-@keyframes rotate {
-    from {transform:translateX(-50%) rotate(0deg);}
-    to {transform:translateX(-50%) rotate(360deg);}
+@keyframes rotate{
+    from{transform:translateX(-50%) rotate(0deg);}
+    to{transform:translateX(-50%) rotate(360deg);}
 }
 
-.content {
-    margin-top:40px;
+.content{
+    margin-top:30px;
 }
 
-h1 {
+h1{
     font-size:34px;
     margin:10px 0;
 }
 
-.subtitle {
+.subtitle{
     font-size:22px;
     margin-bottom:15px;
 }
-
-.blessing-btn {
+    
+.blessing-btn{
     margin-top:20px;
     font-size:20px;
     padding:12px 25px;
@@ -113,50 +111,47 @@ h1 {
     animation:dance 1s infinite alternate;
 }
 
-@keyframes dance {
-    from {transform:scale(1);}
-    to {transform:scale(1.1);}
+@keyframes dance{
+    from{transform:scale(1);}
+    to{transform:scale(1.1);}
 }
 
-.blessing-btn:hover {
+.blessing-btn:hover{
     background:cyan;
     color:black;
 }
 
-.footer {
+.footer{
     margin-top:25px;
     font-size:20px;
-    color:#fff;
     display:none;
     opacity:0;
     transform:translateY(20px);
 }
 
-.show-blessing {
+.show-blessing{
     display:block;
     animation:blessAnim 1.5s forwards;
 }
 
-@keyframes blessAnim {
-    from {
+@keyframes blessAnim{
+    from{
         opacity:0;
         transform:translateY(20px);
-        text-shadow:none;
     }
-    to {
+    to{
         opacity:1;
         transform:translateY(0);
-        text-shadow:0 0 10px cyan, 0 0 20px cyan;
+        text-shadow:0 0 10px cyan,0 0 20px cyan;
     }
 }
-
 </style>
 </head>
 
 <body>
 
 <script>
-    
+
 for(let i=0;i<40;i++){
  let p=document.createElement("div");
  p.className="particle";
@@ -185,25 +180,28 @@ for(let i=0;i<40;i++){
     </div>
 </div>
 
-<audio id="shivAudio">
-<source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+<audio id="shivAudio" loop>
+    <source src="OmNamahShivaya.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
-const text=" ॐ नमः शिवाय ";
-const circle=document.getElementById("circleText");
+const text = " ॐ नमः शिवाय ॐ नमः शिवाय ॐ नमः शिवाय ";
+const circle = document.getElementById("circleText");
 
 for(let i=0;i<text.length;i++){
- let span=document.createElement("span");
- span.innerText=text[i];
- span.style.transform="rotate("+ (i*12) +"deg)";
- circle.appendChild(span);
+    let span=document.createElement("span");
+    span.innerText=text[i];
+    span.style.transform="rotate("+(i*(360/text.length))+"deg)";
+    circle.appendChild(span);
 }
-
+    
 function giveBlessing(){
 
-    document.getElementById("shivAudio").play();
+    let audio=document.getElementById("shivAudio");
+    audio.currentTime=0;
+    audio.volume=0.5;
+    audio.play();
 
     if(navigator.vibrate){
         navigator.vibrate(200);
@@ -213,8 +211,8 @@ function giveBlessing(){
 
     let msg=document.getElementById("blessingMessage");
     msg.classList.add("show-blessing");
-
-    for(let i=0;i<20;i++){
+                      
+    for(let i=0;i<25;i++){
         let petal=document.createElement("div");
         petal.className="petal";
         petal.innerText="🌸";
