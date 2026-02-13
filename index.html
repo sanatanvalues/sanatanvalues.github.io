@@ -1,148 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Har Har Mahadev</title>
 
 <style>
 body {
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
+    text-align:center;
     background: radial-gradient(circle at center, #020024, #000000);
-    overflow: hidden;
     font-family: Arial, sans-serif;
-    text-align: center;
-    color: white;
+    color:white;
+    overflow:hidden;
 }
 
 .particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: cyan;
-    border-radius: 50%;
-    animation: float 10s infinite linear;
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:cyan;
+    border-radius:50%;
+    animation:float 10s infinite linear;
 }
-
 @keyframes float {
-    from { transform: translateY(100vh); opacity: 1; }
-    to { transform: translateY(-10vh); opacity: 0; }
+    from {transform:translateY(100vh);}
+    to {transform:translateY(-10vh);}
 }
 
-.shiva-face {
-    width: 220px;
-    margin: 60px auto 20px;
-    filter: drop-shadow(0 0 15px cyan)
-            drop-shadow(0 0 30px cyan);
+.trishul-container {
+    margin-top:60px;
+    position:relative;
 }
 
 .trishul {
-    font-size: 70px;
-    color: gold;
-    text-shadow: 0 0 20px gold, 0 0 40px orange;
-    margin-bottom: 20px;
+    font-size:120px;
+    color:gold;
+    text-shadow:0 0 20px gold,
+                0 0 40px orange,
+                0 0 60px gold;
 }
 
+.om-text {
+    position:absolute;
+    top:-40px;
+    left:50%;
+    transform:translateX(-50%);
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    animation:rotate 15s linear infinite;
+}
+
+.om-text span {
+    position:absolute;
+    left:50%;
+    transform-origin:0 125px;
+    color:cyan;
+    font-size:16px;
+    text-shadow:0 0 10px cyan, 0 0 20px cyan;
+}
+
+@keyframes rotate {
+    from {transform:translateX(-50%) rotate(0deg);}
+    to {transform:translateX(-50%) rotate(360deg);}
+}
+    
 h1 {
-    font-size: 38px;
-    margin: 10px 0;
+    margin-top:40px;
+    font-size:36px;
 }
 
 .subtitle {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size:22px;
 }
 
 .blessing-btn {
-    margin-top: 20px;
-    font-size: 20px;
-    background: transparent;
-    border: 2px solid cyan;
-    padding: 12px 20px;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    animation: dance 1s infinite alternate;
+    margin-top:30px;
+    font-size:20px;
+    padding:12px 25px;
+    background:transparent;
+    border:2px solid cyan;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    animation:dance 1s infinite alternate;
 }
 
 @keyframes dance {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.08); }
+    0% {transform:scale(1);}
+    100% {transform:scale(1.1);}
 }
 
 .blessing-btn:hover {
-    background: cyan;
-    color: black;
+    background:cyan;
+    color:black;
 }
 
-.footer-text {
-    margin-top: 25px;
-    font-size: 18px;
-    color: #ccc;
+.footer {
+    margin-top:25px;
+    font-size:18px;
+    color:#ccc;
 }
-
 </style>
 </head>
 
 <body>
 
 <script>
-for (let i = 0; i < 40; i++) {
-    let particle = document.createElement("div");
-    particle.className = "particle";
-    particle.style.left = Math.random() * 100 + "vw";
-    particle.style.animationDuration = (5 + Math.random() * 5) + "s";
-    document.body.appendChild(particle);
+for(let i=0;i<40;i++){
+ let p=document.createElement("div");
+ p.className="particle";
+ p.style.left=Math.random()*100+"vw";
+ p.style.animationDuration=(5+Math.random()*5)+"s";
+ document.body.appendChild(p);
 }
 </script>
 
-<svg class="shiva-face" viewBox="0 0 200 300">
-    <!-- Face Outline -->
-    <path d="M100 20 
-             Q50 70 50 140 
-             Q50 220 100 260 
-             Q150 220 150 140 
-             Q150 70 100 20 Z" 
-          fill="none" stroke="cyan" stroke-width="3"/>
+<div class="trishul-container">
 
-    <path d="M40 70 Q100 10 160 70" 
-          fill="none" stroke="cyan" stroke-width="3"/>
-
-    <ellipse cx="100" cy="120" rx="10" ry="5"
-             fill="none" stroke="cyan" stroke-width="2"/>
-
-    <circle cx="100" cy="120" r="2" fill="cyan"/>
-
-    <path d="M130 50 
-             Q140 40 150 50 
-             Q140 55 130 50" 
-          fill="none" stroke="cyan" stroke-width="2"/>
-</svg>
+<div class="om-text" id="circleText"></div>
 
 <div class="trishul">🔱</div>
+
+</div>
 
 <h1>Happy Mahashivratri</h1>
 <div class="subtitle">Har Har Mahadev 🙏</div>
 
 <button class="blessing-btn" onclick="playChant()">
-    इस बटन को दबा कर<br>
-    शिव का आशीर्वाद प्राप्त करें
+इस बटन को दबा कर<br>
+शिव का आशीर्वाद प्राप्त करें
 </button>
 
-<div class="footer-text">
-    🕉 May Lord Shiva bless you with strength, peace and success.
+<div class="footer">
+🕉 May Lord Shiva bless you with strength, peace and success.
 </div>
-
-<!-- Shiv Chant Audio -->
+    
 <audio id="shivAudio">
-    <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+<source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function playChant() {
-    let audio = document.getElementById("shivAudio");
-    audio.play();
+function playChant(){
+document.getElementById("shivAudio").play();
+}
+
+const text=" OM NAMAH SHIVAYA ";
+const circle=document.getElementById("circleText");
+
+for(let i=0;i<text.length;i++){
+ let span=document.createElement("span");
+ span.innerText=text[i];
+ span.style.transform="rotate("+ (i*12) +"deg)";
+ circle.appendChild(span);
 }
 </script>
 
