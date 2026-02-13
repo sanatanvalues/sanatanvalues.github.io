@@ -1,253 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Har Har Mahadev</title>
+<title>Happy Mahashivratri</title>
 
 <style>
-body{
-    margin:0;
-    padding:0;
-    text-align:center;
-    background:radial-gradient(circle at center,#020024,#000000);
-    font-family:Arial,sans-serif;
-    color:white;
-    overflow:hidden;
+body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
 }
 
-.particle{
-    position:absolute;
-    width:4px;
-    height:4px;
-    background:cyan;
-    border-radius:50%;
-    animation:float 10s infinite linear;
-}
-@keyframes float{
-    from{transform:translateY(100vh);}
-    to{transform:translateY(-10vh);}
+h1 {
+    margin-top: 20px;
+    font-size: 40px;
+    color: #00f7ff;
+    text-shadow: 0 0 20px #00f7ff;
 }
 
-.petal{
-    position:absolute;
-    font-size:20px;
-    animation:fall 6s linear forwards;
-}
-@keyframes fall{
-    from{transform:translateY(-10vh) rotate(0deg);}
-    to{transform:translateY(100vh) rotate(360deg);}
+.container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin: 30px auto;
 }
 
-.trishul-container{
-    margin-top:30px;
-    position:relative;
-    height:320px;
+.circle-text {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: rotate 15s linear infinite;
 }
 
-.trishul{
-    font-size:130px;
-    color:gold;
-    position:absolute;
-    top:95px;
-    left:50%;
-    transform:translateX(-50%);
-    text-shadow:0 0 20px gold,0 0 40px orange,0 0 80px gold;
-    animation:pulse 2s infinite alternate;
+.circle-text span {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: 0 160px;
+    font-size: 20px;
+    color: #00f7ff;
+    text-shadow: 0 0 10px #00f7ff;
+    font-weight: bold;
 }
 
-@keyframes pulse{
-    from{text-shadow:0 0 20px gold,0 0 40px orange;}
-    to{text-shadow:0 0 60px gold,0 0 120px orange;}
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-.om-text{
-    position:absolute;
-    top:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:280px;
-    height:280px;
-    border-radius:50%;
-    animation:rotate 18s linear infinite;
+.trishul {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120px;
+    color: #ff9800;
+    text-shadow: 0 0 25px #ff9800;
 }
 
-.om-text span{
-    position:absolute;
-    left:50%;
-    transform-origin:0 135px;
-    color:cyan;
-    font-size:16px;
-    font-weight:bold;
-    letter-spacing:1px;
-    text-shadow:0 0 8px cyan,0 0 18px cyan;
+.dancing {
+    margin-top: 20px;
+    font-size: 22px;
+    color: #ff00ff;
+    animation: dance 1.5s infinite alternate;
 }
 
-@keyframes rotate{
-    from{transform:translateX(-50%) rotate(0deg);}
-    to{transform:translateX(-50%) rotate(360deg);}
+@keyframes dance {
+    from { transform: translateY(0px); }
+    to { transform: translateY(10px); }
 }
 
-.content{
-    margin-top:30px;
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 18px;
+    background: #00f7ff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-h1{
-    font-size:34px;
-    margin:10px 0;
+.arrow {
+    font-size: 35px;
+    margin-top: 10px;
+    animation: bounce 1s infinite;
+    font-weight: bold;
 }
 
-.subtitle{
-    font-size:22px;
-    margin-bottom:10px;
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
 }
 
-.arrow{
-    font-size:40px;
-    font-weight:bold;
-    color:cyan;
-    text-shadow:0 0 15px cyan,0 0 30px cyan;
-    animation:arrowMove 1s infinite;
+.blessing {
+    display: none;
+    margin-top: 30px;
+    font-size: 22px;
+    color: #00ffcc;
+    animation: fadeIn 2s ease-in-out forwards;
 }
 
-@keyframes arrowMove{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(10px);}
-    100%{transform:translateY(0);}
-}
-
-.blessing-btn{
-    margin-top:10px;
-    font-size:20px;
-    padding:12px 25px;
-    background:transparent;
-    border:2px solid cyan;
-    color:white;
-    border-radius:10px;
-    cursor:pointer;
-    animation:dance 1s infinite alternate;
-}
-
-@keyframes dance{
-    from{transform:scale(1);}
-    to{transform:scale(1.08);}
-}
-
-.blessing-btn:hover{
-    background:cyan;
-    color:black;
-}
-
-.footer{
-    margin-top:25px;
-    font-size:20px;
-    display:none;
-    opacity:0;
-}
-
-.show-blessing{
-    display:block;
-    animation:blessAnim 1.5s forwards, blink 1s infinite 2s;
-}
-
-@keyframes blessAnim{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-        text-shadow:0 0 15px cyan,0 0 30px cyan;
-    }
-}
-
-@keyframes blink{
-    0%{opacity:1;}
-    50%{opacity:0.6;}
-    100%{opacity:1;}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
 }
 </style>
 </head>
 
 <body>
 
-<script>
+<h1>Happy Mahashivratri</h1>
 
-for(let i=0;i<40;i++){
- let p=document.createElement("div");
- p.className="particle";
- p.style.left=Math.random()*100+"vw";
- p.style.animationDuration=(5+Math.random()*5)+"s";
- document.body.appendChild(p);
-}
-</script>
-
-<div class="trishul-container">
-    <div class="om-text" id="circleText"></div>
+<div class="container">
+    <div class="circle-text" id="circleText"></div>
     <div class="trishul">🔱</div>
 </div>
 
-<div class="content">
-    <h1>Happy Mahashivratri</h1>
-    <div class="subtitle">Har Har Mahadev 🙏</div>
+<div class="dancing">ॐ नमः शिवाय 🔱</div>
 
-    <div class="arrow">⬇⬇⬇</div>
+<div class="arrow">⬇⬇⬇</div>
 
-    <button class="blessing-btn" id="blessBtn" onclick="giveBlessing()">
-        इस बटन को दबा कर<br>
-        शिव का आशीर्वाद प्राप्त करें
-    </button>
+<button id="blessBtn">Tap for Blessings</button>
 
-    <div class="footer" id="blessingMessage">
-        🕉 May Lord Shiva bless you with strength, peace and success.
-    </div>
+<div class="blessing" id="blessingText">
+    May Lord Shiva bless you with peace, strength and prosperity.
+    Har Har Mahadev 🙏
 </div>
 
-<audio id="shivAudio" loop>
-    <source src="OmNamahShivaya.mp3" type="audio/mpeg">
-</audio>
+<audio id="shivAudio" src="OmNamahShivaya.mp3"></audio>
 
 <script>
-
-const mantra = "OM NAMAH SHIVAYA ";
-const repeated = mantra.repeat(10);
+const text = "OM NAMAH SHIVAY ✨ OM NAMAH SHIVAY ✨ ";
 const circle = document.getElementById("circleText");
 
-for(let i=0;i<repeated.length;i++){
-    let span=document.createElement("span");
-    span.innerText=repeated[i];
-    span.style.transform="rotate("+(i*(360/repeated.length))+"deg)";
+const characters = text.split("");
+const angle = 360 / characters.length;
+
+characters.forEach((char, i) => {
+    const span = document.createElement("span");
+    span.innerText = char;
+    span.style.transform = `rotate(${i * angle}deg)`;
     circle.appendChild(span);
-}
+});
 
-function giveBlessing(){
-
-    let audio=document.getElementById("shivAudio");
-    audio.currentTime=0;
-    audio.volume=0.5;
-    audio.play();
-
-    if(navigator.vibrate){
-        navigator.vibrate(200);
-    }
-
-    document.querySelector(".arrow").style.display="none";
-    document.getElementById("blessBtn").style.display="none";
-
-    let msg=document.getElementById("blessingMessage");
-    msg.classList.add("show-blessing");
-
-    for(let i=0;i<25;i++){
-        let petal=document.createElement("div");
-        petal.className="petal";
-        petal.innerText="🌸";
-        petal.style.left=Math.random()*100+"vw";
-        petal.style.animationDuration=(4+Math.random()*3)+"s";
-        document.body.appendChild(petal);
-    }
-}
+document.getElementById("blessBtn").addEventListener("click", function() {
+    document.getElementById("shivAudio").play();
+    this.style.display = "none";
+    document.querySelector(".arrow").style.display = "none";
+    document.getElementById("blessingText").style.display = "block";
+});
 </script>
 
 </body>
-        </html>
-        
+</html>
