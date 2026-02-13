@@ -3,135 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Mahashivratri</title>
+<title>Har Har Mahadev</title>
 
 <style>
 body {
-  margin: 0;
-  height: 100vh;
-  background: radial-gradient(circle at center, #0a0f2c, #000);
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at center, #020024, #000000);
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
 }
 
 .particle {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: #00eaff;
-  border-radius: 50%;
-  animation: fall linear infinite;
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: cyan;
+    border-radius: 50%;
+    animation: float 10s infinite linear;
 }
 
-@keyframes fall {
-  0% { transform: translateY(-10vh); opacity: 1; }
-  100% { transform: translateY(110vh); opacity: 0; }
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
 }
 
-@keyframes glowBlue {
-  from { filter: drop-shadow(0 0 5px #00eaff); }
-  to { filter: drop-shadow(0 0 20px #00eaff); }
-}
-
-@keyframes glowSaffron {
-  from { text-shadow: 0 0 5px #ff7b00; }
-  to { text-shadow: 0 0 20px #ffae00; }
-}
-
-.container {
-  position: relative;
-  z-index: 2;
-}
-
-svg {
-  width: 200px;
-  animation: glowBlue 2s infinite alternate;
+.shiva-face {
+    width: 220px;
+    margin: 60px auto 20px;
+    filter: drop-shadow(0 0 15px cyan)
+            drop-shadow(0 0 30px cyan);
 }
 
 .trishul {
-  font-size: 60px;
-  color: #ff7b00;
-  animation: glowSaffron 1.5s infinite alternate;
+    font-size: 70px;
+    color: gold;
+    text-shadow: 0 0 20px gold, 0 0 40px orange;
+    margin-bottom: 20px;
 }
 
 h1 {
-  margin: 10px 0;
+    font-size: 38px;
+    margin: 10px 0;
 }
 
-button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 30px;
-  background: #ff7b00;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0 0 15px #ff7b00;
-  transition: 0.3s;
+.subtitle {
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
-button:hover {
-  transform: scale(1.1);
+.blessing-btn {
+    margin-top: 20px;
+    font-size: 20px;
+    background: transparent;
+    border: 2px solid cyan;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    animation: dance 1s infinite alternate;
 }
 
-#blessing {
-  display: none;
-  margin-top: 20px;
-  font-size: 18px;
-  animation: glowBlue 1.5s infinite alternate;
+@keyframes dance {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.08); }
 }
+
+.blessing-btn:hover {
+    background: cyan;
+    color: black;
+}
+
+.footer-text {
+    margin-top: 25px;
+    font-size: 18px;
+    color: #ccc;
+}
+
 </style>
 </head>
 
 <body>
 
-<audio id="chant" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-for(let i=0; i<60; i++){
-  let particle = document.createElement("div");
-  particle.className = "particle";
-  particle.style.left = Math.random()*100 + "vw";
-  particle.style.animationDuration = (3 + Math.random()*5) + "s";
-  document.body.appendChild(particle);
+for (let i = 0; i < 40; i++) {
+    let particle = document.createElement("div");
+    particle.className = "particle";
+    particle.style.left = Math.random() * 100 + "vw";
+    particle.style.animationDuration = (5 + Math.random() * 5) + "s";
+    document.body.appendChild(particle);
 }
 </script>
 
-<div class="container">
+<svg class="shiva-face" viewBox="0 0 200 300">
+    <!-- Face Outline -->
+    <path d="M100 20 
+             Q50 70 50 140 
+             Q50 220 100 260 
+             Q150 220 150 140 
+             Q150 70 100 20 Z" 
+          fill="none" stroke="cyan" stroke-width="3"/>
 
-  <svg viewBox="0 0 200 200" fill="none" stroke="#00eaff" stroke-width="2">
-    <path d="M100 40 Q70 70 100 120 Q130 70 100 40" />
-    <path d="M85 85 Q100 100 115 85" />
-    <circle cx="100" cy="75" r="3" fill="#00eaff"/>
-  </svg>
+    <path d="M40 70 Q100 10 160 70" 
+          fill="none" stroke="cyan" stroke-width="3"/>
 
-  <div class="trishul">🔱</div>
+    <ellipse cx="100" cy="120" rx="10" ry="5"
+             fill="none" stroke="cyan" stroke-width="2"/>
 
-  <h1>Happy Mahashivratri</h1>
-  <h2>From VHP & Bajrang Dal Gurdaspur</h2>
+    <circle cx="100" cy="120" r="2" fill="cyan"/>
 
-  <button id="blessBtn" onclick="showBlessing()">Tap to Take Blessings</button>
+    <path d="M130 50 
+             Q140 40 150 50 
+             Q140 55 130 50" 
+          fill="none" stroke="cyan" stroke-width="2"/>
+</svg>
 
-  <div id="blessing">
-    🕉️ May Lord Shiva bless you with strength, peace and success.  
-    हर हर महादेव 🔱
-  </div>
+<div class="trishul">🔱</div>
 
+<h1>Happy Mahashivratri</h1>
+<div class="subtitle">Har Har Mahadev 🙏</div>
+
+<button class="blessing-btn" onclick="playChant()">
+    इस बटन को दबा कर<br>
+    शिव का आशीर्वाद प्राप्त करें
+</button>
+
+<div class="footer-text">
+    🕉 May Lord Shiva bless you with strength, peace and success.
 </div>
 
+<!-- Shiv Chant Audio -->
+<audio id="shivAudio">
+    <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-function showBlessing() {
-  document.getElementById("blessing").style.display = "block";
-  document.getElementById("chant").play();
-  document.getElementById("blessBtn").style.display = "none";
+function playChant() {
+    let audio = document.getElementById("shivAudio");
+    audio.play();
 }
 </script>
 
