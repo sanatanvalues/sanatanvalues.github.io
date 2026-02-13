@@ -29,8 +29,9 @@ body {
 }
 
 .trishul-container {
-    margin-top:60px;
+    margin-top:30px;
     position:relative;
+    height:300px;
 }
 
 .trishul {
@@ -39,15 +40,19 @@ body {
     text-shadow:0 0 20px gold,
                 0 0 40px orange,
                 0 0 60px gold;
+    position:absolute;
+    top:80px;
+    left:50%;
+    transform:translateX(-50%);
 }
 
 .om-text {
     position:absolute;
-    top:-40px;
+    top:0;
     left:50%;
     transform:translateX(-50%);
-    width:250px;
-    height:250px;
+    width:260px;
+    height:260px;
     border-radius:50%;
     animation:rotate 15s linear infinite;
 }
@@ -55,7 +60,7 @@ body {
 .om-text span {
     position:absolute;
     left:50%;
-    transform-origin:0 125px;
+    transform-origin:0 130px;
     color:cyan;
     font-size:16px;
     text-shadow:0 0 10px cyan, 0 0 20px cyan;
@@ -65,18 +70,23 @@ body {
     from {transform:translateX(-50%) rotate(0deg);}
     to {transform:translateX(-50%) rotate(360deg);}
 }
-    
-h1 {
+
+.content {
     margin-top:40px;
-    font-size:36px;
+}
+
+h1 {
+    font-size:34px;
+    margin:10px 0;
 }
 
 .subtitle {
     font-size:22px;
+    margin-bottom:15px;
 }
 
 .blessing-btn {
-    margin-top:30px;
+    margin-top:20px;
     font-size:20px;
     padding:12px 25px;
     background:transparent;
@@ -101,6 +111,7 @@ h1 {
     margin-top:25px;
     font-size:18px;
     color:#ccc;
+    display:none;
 }
 </style>
 </head>
@@ -118,32 +129,34 @@ for(let i=0;i<40;i++){
 </script>
 
 <div class="trishul-container">
-
-<div class="om-text" id="circleText"></div>
-
-<div class="trishul">🔱</div>
-
+    <div class="om-text" id="circleText"></div>
+    <div class="trishul">🔱</div>
 </div>
 
-<h1>Happy Mahashivratri</h1>
-<div class="subtitle">Har Har Mahadev 🙏</div>
+<div class="content">
+    <h1>Happy Mahashivratri</h1>
+    <div class="subtitle">Har Har Mahadev 🙏</div>
 
-<button class="blessing-btn" onclick="playChant()">
-इस बटन को दबा कर<br>
-शिव का आशीर्वाद प्राप्त करें
-</button>
+    <button class="blessing-btn" id="blessBtn" onclick="giveBlessing()">
+        इस बटन को दबा कर<br>
+        शिव का आशीर्वाद प्राप्त करें
+    </button>
 
-<div class="footer">
-🕉 May Lord Shiva bless you with strength, peace and success.
+    <div class="footer" id="blessingMessage">
+        🕉 May Lord Shiva bless you with strength, peace and success.
+    </div>
 </div>
-    
+
 <audio id="shivAudio">
 <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function playChant(){
-document.getElementById("shivAudio").play();
+
+function giveBlessing(){
+    document.getElementById("shivAudio").play();
+    document.getElementById("blessBtn").style.display="none";
+    document.getElementById("blessingMessage").style.display="block";
 }
 
 const text=" OM NAMAH SHIVAYA ";
@@ -158,4 +171,5 @@ for(let i=0;i<text.length;i++){
 </script>
 
 </body>
-</html>
+    </html>
+        
