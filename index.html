@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Mahashivratri</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at center, #0a0f2c, #000);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #00eaff;
+  border-radius: 50%;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10vh); opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+@keyframes glowBlue {
+  from { filter: drop-shadow(0 0 5px #00eaff); }
+  to { filter: drop-shadow(0 0 20px #00eaff); }
+}
+
+@keyframes glowSaffron {
+  from { text-shadow: 0 0 5px #ff7b00; }
+  to { text-shadow: 0 0 20px #ffae00; }
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+}
+
+svg {
+  width: 200px;
+  animation: glowBlue 2s infinite alternate;
+}
+
+.trishul {
+  font-size: 60px;
+  color: #ff7b00;
+  animation: glowSaffron 1.5s infinite alternate;
+}
+
+h1 {
+  margin: 10px 0;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: #ff7b00;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff7b00;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+#blessing {
+  display: none;
+  margin-top: 20px;
+  font-size: 18px;
+  animation: glowBlue 1.5s infinite alternate;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="chant" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+for(let i=0; i<60; i++){
+  let particle = document.createElement("div");
+  particle.className = "particle";
+  particle.style.left = Math.random()*100 + "vw";
+  particle.style.animationDuration = (3 + Math.random()*5) + "s";
+  document.body.appendChild(particle);
+}
+</script>
+
+<div class="container">
+
+  <svg viewBox="0 0 200 200" fill="none" stroke="#00eaff" stroke-width="2">
+    <path d="M100 40 Q70 70 100 120 Q130 70 100 40" />
+    <path d="M85 85 Q100 100 115 85" />
+    <circle cx="100" cy="75" r="3" fill="#00eaff"/>
+  </svg>
+
+  <div class="trishul">🔱</div>
+
+  <h1>Happy Mahashivratri</h1>
+  <h2>From VHP & Bajrang Dal Gurdaspur</h2>
+
+  <button id="blessBtn" onclick="showBlessing()">Tap to Take Blessings</button>
+
+  <div id="blessing">
+    🕉️ May Lord Shiva bless you with strength, peace and success.  
+    हर हर महादेव 🔱
+  </div>
+
+</div>
+
+<script>
+function showBlessing() {
+  document.getElementById("blessing").style.display = "block";
+  document.getElementById("chant").play();
+  document.getElementById("blessBtn").style.display = "none";
+}
+</script>
+
+</body>
+</html>
