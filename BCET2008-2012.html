@@ -1,0 +1,258 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Har Har Mahadev</title> 
+ 
+<style> 
+body{ 
+    margin:0; 
+    padding:0; 
+    text-align:center; 
+    background:radial-gradient(circle at center,#020024,#000000); 
+    font-family:Arial,sans-serif; 
+    color:white; 
+    overflow:hidden; 
+} 
+ 
+.particle{ 
+    position:absolute; 
+    width:4px; 
+    height:4px; 
+    background:cyan; 
+    border-radius:50%; 
+    animation:float 10s infinite linear; 
+} 
+@keyframes float{ 
+    from{transform:translateY(100vh);} 
+    to{transform:translateY(-10vh);} 
+} 
+ 
+.petal{ 
+    position:absolute; 
+    font-size:20px; 
+    animation:fall 6s linear forwards; 
+} 
+@keyframes fall{ 
+    from{transform:translateY(-10vh) rotate(0deg);} 
+    to{transform:translateY(100vh) rotate(360deg);} 
+} 
+ 
+.trishul-container{ 
+    margin-top:10px; 
+    position:relative; 
+    height:320px; 
+} 
+ 
+.trishul{ 
+    font-size:130px; 
+    color:gold; 
+    position:absolute; 
+    top:95px; 
+    left:50%; 
+    transform:translateX(-50%); 
+    text-shadow:0 0 20px gold,0 0 40px orange,0 0 80px gold; 
+    animation:pulse 2s infinite alternate; 
+} 
+ 
+@keyframes pulse{ 
+    from{text-shadow:0 0 20px gold,0 0 40px orange;} 
+    to{text-shadow:0 0 60px gold,0 0 120px orange;} 
+} 
+ 
+.om-text{ 
+    position:absolute; 
+    top:0; 
+    left:50%; 
+    transform:translateX(-50%); 
+    width:280px; 
+    height:280px; 
+    border-radius:50%; 
+    animation:rotate 18s linear infinite; 
+} 
+ 
+.om-text span{ 
+    position:absolute; 
+    left:50%; 
+    transform-origin:0 135px; 
+    color:cyan; 
+    font-size:16px; 
+    font-weight:bold; 
+    letter-spacing:1px; 
+    text-shadow:0 0 8px cyan,0 0 18px cyan; 
+} 
+ 
+@keyframes rotate{ 
+    from{transform:translateX(-50%) rotate(0deg);} 
+    to{transform:translateX(-50%) rotate(360deg);} 
+} 
+ 
+.content{ 
+    margin-top:15px; 
+} 
+
+.org-line{
+    font-size:19px;
+    margin-bottom:6px;
+    color:#ff8c00;
+    font-weight:bold;
+    line-height:1.4;
+    text-shadow:0 0 10px #ff6600;
+}
+ 
+h1{ 
+    font-size:34px; 
+    margin:5px 0 10px 0; 
+} 
+ 
+.subtitle{ 
+    font-size:22px; 
+    margin-bottom:10px; 
+} 
+ 
+.arrow{ 
+    font-size:40px; 
+    font-weight:bold; 
+    color:cyan; 
+    text-shadow:0 0 15px cyan,0 0 30px cyan; 
+    animation:arrowMove 1s infinite; 
+} 
+ 
+@keyframes arrowMove{ 
+    0%{transform:translateY(0);} 
+    50%{transform:translateY(10px);} 
+    100%{transform:translateY(0);} 
+} 
+ 
+.blessing-btn{ 
+    margin-top:10px; 
+    font-size:20px; 
+    padding:12px 25px; 
+    background:transparent; 
+    border:2px solid cyan; 
+    color:white; 
+    border-radius:10px; 
+    cursor:pointer; 
+    animation:dance 1s infinite alternate; 
+} 
+ 
+@keyframes dance{ 
+    from{transform:scale(1);} 
+    to{transform:scale(1.08);} 
+} 
+ 
+.blessing-btn:hover{ 
+    background:cyan; 
+    color:black; 
+} 
+ 
+.footer{ 
+    margin-top:25px; 
+    font-size:20px; 
+    display:none; 
+    opacity:0; 
+} 
+ 
+.show-blessing{ 
+    display:block; 
+    animation:blessAnim 1.5s forwards, blink 1s infinite 2s; 
+} 
+ 
+@keyframes blessAnim{ 
+    from{opacity:0; transform:translateY(20px);} 
+    to{opacity:1; transform:translateY(0); text-shadow:0 0 15px cyan,0 0 30px cyan;} 
+} 
+ 
+@keyframes blink{ 
+    0%{opacity:1;} 
+    50%{opacity:0.6;} 
+    100%{opacity:1;} 
+} 
+</style> 
+</head> 
+ 
+<body> 
+ 
+<script> 
+for(let i=0;i<40;i++){ 
+ let p=document.createElement("div"); 
+ p.className="particle"; 
+ p.style.left=Math.random()*100+"vw"; 
+ p.style.animationDuration=(5+Math.random()*5)+"s"; 
+ document.body.appendChild(p); 
+} 
+</script> 
+ 
+<div class="trishul-container"> 
+    <div class="om-text" id="circleText"></div> 
+    <div class="trishul">🔱</div> 
+</div> 
+ 
+<div class="content"> 
+
+    <div class="org-line">
+          Deepak Mahajan, 511/08<br>
+        wishes all 2008-2012 BCETians
+    </div>
+
+    <h1>Happy Mahashivratri</h1> 
+    <div class="subtitle">Har Har Mahadev 🙏</div> 
+    <div class="arrow">⬇⬇⬇</div> 
+ 
+    <button class="blessing-btn" id="blessBtn" onclick="giveBlessing()"> 
+        इस बटन को दबा कर<br> 
+        शिव का आशीर्वाद प्राप्त करें 
+    </button> 
+ 
+    <div class="footer" id="blessingMessage"> 
+        🕉 May Lord Shiva bless you with strength, peace and success. 
+    </div> 
+</div> 
+ 
+<audio id="shivAudio" loop> 
+    <source src="OmNamahShivaya.mp3" type="audio/mpeg"> 
+</audio> 
+ 
+<script> 
+ 
+const mantra = "OM NAMAH SHIVAYA ✨ "; 
+const repeated = mantra.repeat(3); 
+const circle = document.getElementById("circleText"); 
+ 
+for(let i=0;i<repeated.length;i++){ 
+    let span=document.createElement("span"); 
+    span.innerText=repeated[i]; 
+    span.style.transform="rotate("+(i*(360/repeated.length))+"deg)"; 
+    circle.appendChild(span); 
+} 
+ 
+function giveBlessing(){ 
+    let audio=document.getElementById("shivAudio"); 
+    audio.currentTime=0; 
+    audio.volume=0.5; 
+    audio.play(); 
+ 
+    if(navigator.vibrate){ 
+        navigator.vibrate(200); 
+    } 
+ 
+    document.querySelector(".arrow").style.display="none"; 
+    document.getElementById("blessBtn").style.display="none"; 
+ 
+    let msg=document.getElementById("blessingMessage"); 
+    msg.classList.add("show-blessing"); 
+ 
+    for(let i=0;i<25;i++){ 
+        let petal=document.createElement("div"); 
+        petal.className="petal"; 
+        petal.innerText="🌸"; 
+        petal.style.left=Math.random()*100+"vw"; 
+        petal.style.animationDuration=(4+Math.random()*3)+"s"; 
+        document.body.appendChild(petal); 
+    } 
+} 
+</script> 
+ 
+</body> 
+  </html>
+  
